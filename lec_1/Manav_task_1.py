@@ -61,3 +61,69 @@
 #                 l.append(i)
 #                 l.append(nums.index(other))
 #                 return l
+
+
+
+
+
+# Leetcode problem
+
+# class Solution(object):
+#     def majorityElement(self, nums):
+#         """
+#         :type nums: List[int]
+#         :rtype: int
+#         """
+#         count = 0
+#         candidate = None
+
+#         for num in nums:
+#             if count == 0:
+#                 candidate = num
+#             count += (1 if num == candidate else -1)
+
+#         return candidate
+
+
+
+
+
+# Leetcode Problem
+
+# class Solution(object):
+#     def canConstruct(self, ransomNote, magazine):
+#         """
+#         :type ransomNote: str
+#         :type magazine: str
+#         :rtype: bool
+#         """
+#         for i in ransomNote:
+#             if(i in magazine):
+#                 magazine = magazine.replace(i,'',1)
+#             else:
+#                 return False
+#         return True
+
+
+
+
+
+# Leetcode Problem
+
+# class Solution(object):
+#     def firstUniqChar(self, s):
+#         """
+#         :type s: str
+#         :rtype: int
+#         """
+#         char_count = {}
+#         for char in s:
+#             if char in char_count:
+#                 char_count[char] += 1
+#             else:
+#                 char_count[char] = 1
+#     
+#         for index, char in enumerate(s):
+#             if char_count[char] == 1:
+#                 return index
+#         return -1
