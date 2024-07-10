@@ -5,7 +5,7 @@ LOG_FILE = 'activity_log.txt'
 
 
 def load_tasks():
-    """Load tasks from the file."""
+
     if os.path.exists(TASK_FILE):
         with open(TASK_FILE, 'r') as file:
             tasks = file.read().splitlines()
@@ -15,14 +15,14 @@ def load_tasks():
 
 
 def save_tasks(tasks):
-    """Save tasks to the file."""
+
     with open(TASK_FILE, 'w') as file:
         for task in tasks:
             file.write(task + '\n')
 
 
 def log_activity(activity):
-    """Log activity to the log file."""
+
     with open(LOG_FILE, 'a') as file:
         file.write(activity + '\n')
 
@@ -77,6 +77,28 @@ def print_all_tasks():
             print(f"- {task}")
 
 
+def clear_all_tasks():
+    tasks = load_tasks()
+    if tasks:
+        with open(TASK_FILE,'w') as file:
+            file.truncate(0)
+            print("All tasks cleared")
+    else:
+        print("No tasks to clear")
+
+
+
+def clear_log():
+    with open(LOG_FILE,'r') as file:
+        logs = file.read()
+        if logs:
+            with open(LOG_FILE, 'w') as file:
+                pass
+                print("All logs cleared")
+        else:
+            print("No logs to clear")
+
+
 def main():
     while True:
         print("\nTask Manager")
@@ -84,7 +106,9 @@ def main():
         print("2. Remove an existing task")
         print("3. Search for a task")
         print("4. Print all tasks")
-        print("5. Exit")
+        print("5. Clear all tasks")
+        print("6. Clear Logs")
+        print("7. Exit")
 
         s = input("Enter your choice: ")
 
@@ -108,7 +132,11 @@ def main():
                 print("Task cannot be empty.")
         elif s == '4':
             print_all_tasks()
-        elif s == '5':
+        elif s == "5":
+            clear_all_tasks()
+        elif s == "6":
+            clear_log()
+        elif s == '7':
             print("Exiting the system.")
             break
         else:
@@ -117,3 +145,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
